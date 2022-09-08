@@ -59,7 +59,7 @@ namespace GenericFileProcessor.GenericsFileProcessor
                 line.Append(col);
                 line.Append(',');
             }
-            lines.Add(line.ToString().Substring(0, line.Length - 1));
+            lines.Add(line.ToString().Trim(','));
 
             foreach (var row in data)
             {
@@ -69,9 +69,10 @@ namespace GenericFileProcessor.GenericsFileProcessor
                     line.Append(col);
                     line.Append(',');
                 }
-
+                lines.Add(line.ToString().Trim(','));
             }
 
+            System.IO.File.WriteAllLines(filePath, lines);
 
         }
 

@@ -6,6 +6,7 @@
         {
             string test = "Mark,Mostowiak,Hanka,";
 
+            test = test.Trim(',');
             Console.WriteLine(test);
 
             Console.ReadLine();
