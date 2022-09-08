@@ -56,22 +56,23 @@ namespace GenericFileProcessor.GenericsFileProcessor
             //Create the header
             foreach (var col in cols)
             {
-                line.Append(col);
+                line.Append(col.Name);
                 line.Append(',');
             }
-            lines.Add(line.ToString().Substring(0, line.Length - 1));
+            lines.Add(line.ToString().Trim(','));
 
             foreach (var row in data)
             {
                 line = new StringBuilder();
                 foreach (var col in cols)
                 {
-                    line.Append(col);
+                    line.Append(col.GetValue(row));
                     line.Append(',');
                 }
-
+                lines.Add(line.ToString().Trim(','));
             }
 
+            System.IO.File.WriteAllLines(filePath, lines);
 
         }
 
